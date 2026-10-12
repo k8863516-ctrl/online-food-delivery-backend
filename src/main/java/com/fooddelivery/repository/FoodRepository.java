@@ -1,0 +1,14 @@
+package com.fooddelivery.repository;
+
+import com.fooddelivery.entity.FoodItem;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface FoodRepository extends JpaRepository<FoodItem, Long> {
+    List<FoodItem> findByRestaurantId(Long restaurantId);
+    List<FoodItem> findByRestaurantIdAndIsAvailable(Long restaurantId, Boolean isAvailable);
+    List<FoodItem> findByRestaurantIdAndCategoryIgnoreCase(Long restaurantId, String category);
+}
